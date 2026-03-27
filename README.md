@@ -5,6 +5,12 @@
 
 ---
 
+## 📁 Project: It-s-about-me
+
+This repository contains a personal portfolio website built with **HTML**, **CSS**, and **JavaScript**. It showcases profile information, skills, and key projects, with a focus on chess-related logic and coding practice.
+
+---
+
 ## 🧑‍💻 About Me
 
 - 👨‍🎓 Currently pursuing my studies at **L.N Government College**
@@ -53,4 +59,4 @@ A logical chess game developed using **Java** and **XML**.
 
 <br/>
 
-<p align="center"><i>Death is inevitable!</i></p>
+<p align="center"><i>Keep learning, keep coding, and enjoy the journey!</i></p>

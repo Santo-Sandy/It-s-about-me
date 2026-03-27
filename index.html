@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Santo - Full Stack Developer</title>
+  <meta name="theme-color" content="#050811"/>
+  <meta name="msapplication-navbutton-color" content="#050811"/>
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+  <link rel="icon" type="image/jpeg" href="icon.jpeg"/>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&family=Fira+Code:wght@300;400;500;600;700&family=Source+Code+Pro:wght@300;400;500;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+  <!-- CURSOR -->
+  <div id="cursor-dot"></div>
+  <div id="cursor-ring"></div>
+
+  <!-- SPLASH -->
+  <div id="splash">
+    <canvas id="splash-canvas"></canvas>
+    <div class="splash-inner">
+      <div class="splash-logo">
+        <span class="sl-s">S</span><span class="sl-a">A</span><span class="sl-n">N</span><span class="sl-t">T</span><span class="sl-o">O</span>
+      </div>
+      <div class="splash-tagline">Initializing Portfolio<span class="splash-dots"></span></div>
+      <div class="splash-bar"><div class="splash-fill"></div></div>
+    </div>
+  </div>
+
+  <!-- NAVBAR -->
+  <nav id="navbar">
+    <a href="#home" class="logo">
+      <span class="logo-bracket">{</span>santo<span class="logo-accent">.</span><span class="logo-bracket">}</span>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#home" data-num="01">Home</a></li>
+      <li><a href="#about" data-num="02">About</a></li>
+      <li><a href="#skills" data-num="03">Skills</a></li>
+      <li><a href="#experience" data-num="04">Experience</a></li>
+      <li><a href="#projects" data-num="05">Projects</a></li>
+    <li><a href="#contact" data-num="06">Contact</a></li>
+    <li><a href="#games" data-num="07">Games</a></li>
+    </ul>
+<div class="nav-right">
+      <a href="mailto:slantzer3112@gmail.com" class="nav-cta">Hire Me <i class="fas fa-arrow-right"></i></a>
+      <button class="theme-toggle" id="themeToggle" title="Switch to light mode" aria-label="Toggle color theme" aria-pressed="false">
+        <span class="theme-toggle-icon"><i class="fas fa-moon"></i></span>
+        <span class="theme-toggle-text">Dark</span>
+      </button>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section id="home" class="hero">
+    <canvas id="hero-canvas"></canvas>
+    <div class="hero-noise"></div>
+    <div class="hero-content">
+      <div class="hero-left">
+        <div class="hero-badge">
+          <span class="badge-dot"></span>
+          <span>Available for opportunities</span>
+        </div>
+        <h1 class="hero-name">
+          <span class="hn-line hn-hello">Hello, I'm</span>
+          <span class="hn-line hn-main">Santo</span>
+          <span class="hn-line hn-role"><span id="typed"></span><span class="cursor">|</span></span>
+        </h1>
+        <p class="hero-desc">
+          Full Stack Developer crafting production-grade Flutter apps, Angular dashboards &amp; scalable backends. State-level competition winner. Interning at <strong>Kriyatec IT Systems</strong>.
+        </p>
+        <div class="hero-stats">
+          <div class="stat">
+            <span class="stat-num" data-count="10">0</span><span class="stat-plus">+</span>
+            <span class="stat-label">Projects</span>
+          </div>
+          <div class="stat-div"></div>
+          <div class="stat">
+            <span class="stat-num" data-count="3">0</span>
+            <span class="stat-label">Awards</span>
+          </div>
+          <div class="stat-div"></div>
+          <div class="stat">
+            <span class="stat-num" data-count="4">0</span><span class="stat-plus">+</span>
+            <span class="stat-label">Years Coding</span>
+          </div>
+        </div>
+        <div class="hero-actions">
+          <a href="#projects" class="btn-primary">
+            <span>View Projects</span>
+            <div class="btn-glow"></div>
+          </a>
+          <a href="#contact" class="btn-outline">Let's Talk <i class="fas fa-arrow-up-right-from-square"></i></a>
+        </div>
+        <div class="hero-socials">
+          <a href="https://github.com/Santo-Sandy" target="_blank" rel="noopener noreferrer" class="social-link" data-tooltip="GitHub">
+            <i class="fab fa-github"></i>
+          </a>
+          <a href="https://www.linkedin.com/in/santhosh-g-584398276" target="_blank" rel="noopener noreferrer" class="social-link" data-tooltip="LinkedIn">
+            <i class="fab fa-linkedin-in"></i>
+          </a>
+          <a href="https://www.instagram.com/dead_user_off/" target="_blank" rel="noopener noreferrer" class="social-link" data-tooltip="Instagram">
+            <i class="fab fa-instagram"></i>
+          </a>
+          <a href="mailto:slantzer3112@gmail.com" class="social-link" data-tooltip="Email">
+            <i class="fas fa-envelope"></i>
+          </a>
+        </div>
+      </div>
+      <div class="hero-right">
+        <div class="avatar-system">
+          <div class="avatar-bg-ring"></div>
+          <div class="avatar-mid-ring"></div>
+          <div class="avatar-frame">
+            <img src="profile.jpeg" alt="Santo" class="avatar-img" onerror="this.style.display='none';document.querySelector('.avatar-initials').style.display='flex'"/>
+            <div class="avatar-initials">SG</div>
+          </div>
+          <div class="avatar-orbit orbit-a">
+            <div class="orbit-chip chip-flutter"><i class="fas fa-mobile-alt"></i> Flutter</div>
+          </div>
+          <div class="avatar-orbit orbit-b">
+            <div class="orbit-chip chip-java"><i class="fas fa-coffee"></i> Java</div>
+          </div>
+          <div class="avatar-orbit orbit-c">
+            <div class="orbit-chip chip-angular"><i class="fab fa-angular"></i> Angular</div>
+          </div>
+          <div class="avatar-status">
+            <span class="pulse-ring"></span>
+            <span class="status-text">Open to Work</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <a href="#about" class="scroll-indicator">
+      <div class="si-line"></div>
+      <span>Scroll</span>
+    </a>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" class="section">
+    <div class="container">
+      <div class="sec-header">
+        <span class="sec-label">// 02 - Who I Am</span>
+        <h2 class="sec-title">About <span>Me</span></h2>
+      </div>
+      <div class="about-layout">
+        <div class="about-text reveal-left">
+          <p class="about-intro">I'm a passionate <strong>Full Stack Developer</strong> from Tamil Nadu, India - building things that actually work and look incredible doing it.</p>
+          <p>With a B.Sc. in Computer Science (GPA 8.4/10) and hands-on internship experience at Kriyatec IT Systems, I bridge the gap between elegant frontend design and robust backend architecture.</p>
+          <p>When I'm not coding, I'm training the next generation of developers as a programming teacher - because the best way to master something is to teach it.</p>
+          <div class="about-highlights">
+            <div class="ah-item">
+              <i class="fas fa-map-marker-alt"></i>
+              <span>Gummidipoondi, Tamil Nadu</span>
+            </div>
+            <div class="ah-item">
+              <i class="fas fa-language"></i>
+              <span>Tamil (Native) - English (Intermediate)</span>
+            </div>
+            <div class="ah-item">
+              <i class="fas fa-graduation-cap"></i>
+              <span>B.Sc. CS - University of Madras</span>
+            </div>
+          </div>
+        </div>
+        <div class="about-cards reveal-right">
+          <div class="about-card ac-glow">
+            <div class="ac-top">
+              <div class="ac-icon"><i class="fas fa-trophy"></i></div>
+              <span class="ac-tag">Achievement</span>
+            </div>
+            <h3>State-Level Winner</h3>
+            <p>3rd place at state-level Android App Development Competition + 1st place Debugging Contest</p>
+          </div>
+          <div class="about-card">
+            <div class="ac-top">
+              <div class="ac-icon"><i class="fas fa-code"></i></div>
+              <span class="ac-tag">Internship</span>
+            </div>
+            <h3>Kriyatec IT Systems</h3>
+            <p>Building production Flutter apps &amp; Angular dashboards with MongoDB - Dec 2025 to Present</p>
+          </div>
+          <div class="about-card">
+            <div class="ac-top">
+              <div class="ac-icon"><i class="fas fa-chalkboard-teacher"></i></div>
+              <span class="ac-tag">Teaching</span>
+            </div>
+            <h3>Win Wings Educator</h3>
+            <p>Training students in Java, Python, and practical software development since June 2022</p>
+          </div>
+          <div class="about-card">
+            <div class="ac-top">
+              <div class="ac-icon"><i class="fas fa-certificate"></i></div>
+              <span class="ac-tag">Certified</span>
+            </div>
+            <h3>Java Full Stack</h3>
+            <p>Certified by Dream Code - Spring, React, MySQL, JDBC, Servlets and full deployment pipeline</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills" class="section alt">
+    <div class="container">
+      <div class="sec-header">
+        <span class="sec-label">// 03 - What I Know</span>
+        <h2 class="sec-title">My <span>Arsenal</span></h2>
+      </div>
+      <div class="skills-layout">
+        <div class="skill-bars-col">
+          <div class="skill-bar reveal" data-pct="95">
+            <div class="sb-head">
+              <span>Java (Core &amp; Advanced)</span>
+              <span class="sb-pct">95%</span>
+            </div>
+            <div class="sb-track"><div class="sb-fill" style="--target: 95%"></div></div>
+          </div>
+          <div class="skill-bar reveal" data-pct="90">
+            <div class="sb-head"><span>Flutter / Dart</span><span class="sb-pct">90%</span></div>
+            <div class="sb-track"><div class="sb-fill" style="--target: 90%"></div></div>
+          </div>
+          <div class="skill-bar reveal" data-pct="90">
+            <div class="sb-head"><span>Android Development</span><span class="sb-pct">90%</span></div>
+            <div class="sb-track"><div class="sb-fill" style="--target: 90%"></div></div>
+          </div>
+          <div class="skill-bar reveal" data-pct="85">
+            <div class="sb-head"><span>Angular</span><span class="sb-pct">85%</span></div>
+            <div class="sb-track"><div class="sb-fill" style="--target: 85%"></div></div>
+          </div>
+          <div class="skill-bar reveal" data-pct="85">
+            <div class="sb-head"><span>React</span><span class="sb-pct">85%</span></div>
+            <div class="sb-track"><div class="sb-fill" style="--target: 85%"></div></div>
+          </div>
+          <div class="skill-bar reveal" data-pct="85">
+            <div class="sb-head"><span>Firebase</span><span class="sb-pct">85%</span></div>
+            <div class="sb-track"><div class="sb-fill" style="--target: 85%"></div></div>
+          </div>
+          <div class="skill-bar reveal" data-pct="80">
+            <div class="sb-head"><span>MongoDB</span><span class="sb-pct">80%</span></div>
+            <div class="sb-track"><div class="sb-fill" style="--target: 80%"></div></div>
+          </div>
+          <div class="skill-bar reveal" data-pct="80">
+            <div class="sb-head"><span>MySQL</span><span class="sb-pct">80%</span></div>
+            <div class="sb-track"><div class="sb-fill" style="--target: 80%"></div></div>
+          </div>
+        </div>
+        <div class="skill-cloud-col">
+          <div class="skill-group reveal">
+            <h4><span class="sg-dot" style="--c:#f7df1e"></span> Languages</h4>
+            <div class="skill-pills">
+              <span class="pill">Java</span>
+              <span class="pill">Python</span>
+              <span class="pill">JavaScript</span>
+              <span class="pill">Dart</span>
+              <span class="pill">C / C++</span>
+              <span class="pill">PHP</span>
+              <span class="pill">R</span>
+            </div>
+          </div>
+          <div class="skill-group reveal">
+            <h4><span class="sg-dot" style="--c:#dd0031"></span> Frameworks</h4>
+            <div class="skill-pills">
+              <span class="pill">Flutter</span>
+              <span class="pill">Angular</span>
+              <span class="pill">React</span>
+              <span class="pill">Spring</span>
+              <span class="pill">Node.js</span>
+            </div>
+          </div>
+          <div class="skill-group reveal">
+            <h4><span class="sg-dot" style="--c:#00d4aa"></span> Databases &amp; Cloud</h4>
+            <div class="skill-pills">
+              <span class="pill">MongoDB</span>
+              <span class="pill">MySQL</span>
+              <span class="pill">Firebase</span>
+              <span class="pill">REST API</span>
+            </div>
+          </div>
+          <div class="skill-group reveal">
+            <h4><span class="sg-dot" style="--c:#6c63ff"></span> Tools</h4>
+            <div class="skill-pills">
+              <span class="pill">Android Studio</span>
+              <span class="pill">VS Code</span>
+              <span class="pill">Git / GitHub</span>
+              <span class="pill">Postman</span>
+              <span class="pill">XAMPP</span>
+              <span class="pill">Chart.js</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience" class="section">
+    <div class="container">
+      <div class="sec-header">
+        <span class="sec-label">// 04 - My Journey</span>
+        <h2 class="sec-title">Experience &amp; <span>Education</span></h2>
+      </div>
+      <div class="timeline">
+        <div class="tl-line"></div>
+
+        <div class="tl-item reveal">
+          <div class="tl-dot dot-work"></div>
+          <div class="tl-card">
+            <div class="tl-card-header">
+              <div>
+                <span class="tl-badge badge-work">Internship</span>
+                <h3>Software Developer Intern</h3>
+                <h4>Kriyatec IT Systems</h4>
+              </div>
+              <span class="tl-date">Dec 2025 - Present</span>
+            </div>
+            <ul class="tl-list">
+              <li>Built production-ready Flutter mobile applications with REST APIs and Razorpay/Stripe payment integration</li>
+              <li>Implemented Angular admin dashboards with Chart.js visualization, JWT authentication &amp; MongoDB backend</li>
+              <li>Collaborated on full-stack features, optimizing performance for scalable architecture</li>
+            </ul>
+            <div class="tl-tags">
+              <span>Flutter</span><span>Angular</span><span>MongoDB</span><span>JWT</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="tl-item reveal">
+          <div class="tl-dot dot-teach"></div>
+          <div class="tl-card">
+            <div class="tl-card-header">
+              <div>
+                <span class="tl-badge badge-teach">Teaching</span>
+                <h3>Programming Teacher</h3>
+                <h4>Win Wings Education Centre</h4>
+              </div>
+              <span class="tl-date">Jun 2022 - Present</span>
+            </div>
+            <ul class="tl-list">
+              <li>Delivered practical programming training in Java, Python &amp; debugging techniques</li>
+              <li>Designed hands-on sessions that boosted student problem-solving skills &amp; code quality</li>
+            </ul>
+            <div class="tl-tags">
+              <span>Java</span><span>Python</span><span>Mentoring</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="tl-item reveal">
+          <div class="tl-dot dot-edu"></div>
+          <div class="tl-card">
+            <div class="tl-card-header">
+              <div>
+                <span class="tl-badge badge-edu">Education</span>
+                <h3>B.Sc. Computer Science</h3>
+                <h4>L. N. Government College - University of Madras</h4>
+              </div>
+              <span class="tl-date">2021 - Jun 2024</span>
+            </div>
+            <ul class="tl-list">
+              <li>GPA 8.4/10 - consistent academic excellence</li>
+              <li>1st Place - Debugging Contest</li>
+              <li>3rd Place - State-Level Android App Development Competition</li>
+              <li>Mini Project: LetsChat - Java, XML &amp; Firebase real-time messaging</li>
+            </ul>
+            <div class="tl-tags">
+              <span>GPA 8.4</span><span>State Award</span><span>Android</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="tl-item reveal">
+          <div class="tl-dot dot-cert"></div>
+          <div class="tl-card">
+            <div class="tl-card-header">
+              <div>
+                <span class="tl-badge badge-cert">Certification</span>
+                <h3>Java Full Stack Development</h3>
+                <h4>Dream Code</h4>
+              </div>
+              <span class="tl-date">Jun 2025</span>
+            </div>
+            <ul class="tl-list">
+              <li>Java Core, JDBC, Servlets, Spring, HTML, CSS, JavaScript, React, MySQL</li>
+              <li>Built &amp; deployed full-stack web applications end-to-end</li>
+              <li>Tools: Git, Postman, XAMPP</li>
+            </ul>
+            <div class="tl-tags">
+              <span>Spring</span><span>React</span><span>MySQL</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects" class="section alt">
+    <div class="container">
+      <div class="sec-header">
+        <span class="sec-label">// 05 - What I've Built</span>
+        <h2 class="sec-title">Featured <span>Projects</span></h2>
+      </div>
+      <div class="projects-grid">
+
+        <div class="proj-card proj-featured reveal">
+          <div class="proj-number">01</div>
+          <div class="proj-body">
+            <div class="proj-top">
+              <div class="proj-icon"><i class="fas fa-comments"></i></div>
+              <div class="proj-links">
+                <a href="https://github.com/Santo-Sandy/LetsChat" target="_blank" rel="noopener noreferrer" class="proj-link"><i class="fab fa-github"></i></a>
+                <a href="#" class="proj-link"><i class="fas fa-external-link-alt"></i></a>
+              </div>
+            </div>
+            <div class="proj-badge">State-Level Winner</div>
+            <h3>LetsChat</h3>
+            <p>Real-time Android chat app with Firebase authentication, live messaging &amp; cloud storage. Award-winning full-cycle mobile development showcase.</p>
+            <ul class="proj-features">
+              <li><i class="fas fa-check-circle"></i> Firebase Auth &amp; Realtime Database</li>
+              <li><i class="fas fa-check-circle"></i> Push notifications &amp; offline queueing</li>
+              <li><i class="fas fa-check-circle"></i> Modern XML layouts with smooth animations</li>
+            </ul>
+          </div>
+          <div class="proj-footer">
+            <span>Java</span><span>XML</span><span>Firebase</span><span>Android</span>
+          </div>
+        </div>
+
+        <div class="proj-card reveal">
+          <div class="proj-number">02</div>
+          <div class="proj-body">
+            <div class="proj-top">
+              <div class="proj-icon"><i class="fas fa-shopping-cart"></i></div>
+              <div class="proj-links">
+                <a href="https://github.com/Santo-Sandy/ecommerce-flutter" target="_blank" rel="noopener noreferrer" class="proj-link"><i class="fab fa-github"></i></a>
+              </div>
+            </div>
+            <div class="proj-badge prod">Production App</div>
+            <h3>E-Commerce Platform</h3>
+            <p>Full-featured Flutter e-commerce app with product catalog, cart, Razorpay/Stripe payments &amp; MongoDB REST backend.</p>
+            <ul class="proj-features">
+              <li><i class="fas fa-check-circle"></i> State management (Provider/Riverpod)</li>
+              <li><i class="fas fa-check-circle"></i> Secure payment gateway integration</li>
+              <li><i class="fas fa-check-circle"></i> MongoDB CRUD via Node.js API</li>
+            </ul>
+          </div>
+          <div class="proj-footer">
+            <span>Flutter</span><span>MongoDB</span><span>REST API</span><span>Razorpay</span>
+          </div>
+        </div>
+
+        <div class="proj-card reveal">
+          <div class="proj-number">03</div>
+          <div class="proj-body">
+            <div class="proj-top">
+              <div class="proj-icon"><i class="fas fa-chart-line"></i></div>
+              <div class="proj-links">
+                <a href="https://github.com/Santo-Sandy/admin-dashboard" target="_blank" rel="noopener noreferrer" class="proj-link"><i class="fab fa-github"></i></a>
+              </div>
+            </div>
+            <div class="proj-badge prod">Internship Project</div>
+            <h3>Admin Dashboard</h3>
+            <p>Angular admin panel with real-time Chart.js analytics, JWT + role-based auth, and MongoDB API integration.</p>
+            <ul class="proj-features">
+              <li><i class="fas fa-check-circle"></i> Real-time analytics &amp; charts</li>
+              <li><i class="fas fa-check-circle"></i> Role-based access control</li>
+              <li><i class="fas fa-check-circle"></i> Angular services + MongoDB</li>
+            </ul>
+          </div>
+          <div class="proj-footer">
+            <span>Angular</span><span>Chart.js</span><span>MongoDB</span><span>JWT</span>
+          </div>
+        </div>
+
+      </div>
+      <div class="projects-more reveal">
+        <a href="https://github.com/Santo-Sandy" target="_blank" rel="noopener noreferrer" class="btn-outline-lg">
+          <i class="fab fa-github"></i> View All 10+ Projects on GitHub
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- GAMES -->
+  <section id="games" class="section">
+      <div class="container">
+        <div class="sec-header">
+          <span class="sec-label">// 07 - Interactive Games</span>
+          <h2 class="sec-title">Play &amp; <span>Test My Code</span></h2>
+        </div>
+        <p class="games-intro reveal">Challenge yourself with these handcrafted games. Perfect for recruiters to see JavaScript logic in action.</p>
+        <div class="games-grid">
+
+          <!-- TIC-TAC-TOE -->
+          <div class="game-card reveal" data-game="tictactoe">
+            <div class="game-preview">
+              <canvas id="ttt-preview" width="120" height="120"></canvas>
+            </div>
+            <div class="game-info">
+              <h3>Tic-Tac-Toe</h3>
+              <p>Beat the unbeatable AI</p>
+              <span class="game-tags"><span>AI</span><span>Logic</span></span>
+            </div>
+            <button class="game-play-btn">Play <i class="fas fa-play"></i></button>
+          </div>
+
+          <!-- SNAKE -->
+          <div class="game-card reveal" data-game="snake">
+            <div class="game-preview">
+              <canvas id="snake-preview" width="120" height="120"></canvas>
+            </div>
+            <div class="game-info">
+              <h3>Snake</h3>
+              <p>Classic with smooth controls</p>
+              <span class="game-tags"><span>Canvas</span><span>Controls</span></span>
+            </div>
+            <button class="game-play-btn">Play <i class="fas fa-play"></i></button>
+          </div>
+
+          <!-- MEMORY -->
+          <div class="game-card reveal" data-game="memory">
+            <div class="game-preview">
+              <canvas id="memory-preview" width="120" height="120"></canvas>
+            </div>
+            <div class="game-info">
+              <h3>Memory Match</h3>
+              <p>Flip &amp; match cards</p>
+              <span class="game-tags"><span>State</span><span>Animation</span></span>
+            </div>
+            <button class="game-play-btn">Play <i class="fas fa-play"></i></button>
+          </div>
+
+          <!-- 2048 -->
+          <div class="game-card reveal" data-game="2048">
+            <div class="game-preview">
+              <canvas id="2048-preview" width="120" height="120"></canvas>
+            </div>
+            <div class="game-info">
+              <h3>2048</h3>
+              <p>Slide to 2048 tile</p>
+              <span class="game-tags"><span>Algorithm</span><span>Grid</span></span>
+            </div>
+            <button class="game-play-btn">Play <i class="fas fa-play"></i></button>
+          </div>
+
+          <!-- CHESS CLOCK -->
+          <div class="game-card reveal" data-game="chessclock">
+            <div class="game-preview">
+              <canvas id="clock-preview" width="120" height="120"></canvas>
+            </div>
+            <div class="game-info">
+              <h3>Chess Clock</h3>
+              <p>Duel timer for head-to-head matches</p>
+              <span class="game-tags"><span>Timer</span><span>Chess</span></span>
+            </div>
+            <button class="game-play-btn">Play <i class="fas fa-play"></i></button>
+          </div>
+
+        </div>
+      </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="section">
+    <div class="container">
+      <div class="sec-header">
+        <span class="sec-label">// 06 - Let's Connect</span>
+        <h2 class="sec-title">Get In <span>Touch</span></h2>
+      </div>
+      <div class="contact-layout">
+        <div class="contact-left reveal-left">
+          <p class="contact-pitch">Open to <strong>product-based Software Developer</strong> roles leveraging Flutter, Angular &amp; Full Stack expertise. Let's build something remarkable together.</p>
+          <a href="mailto:slantzer3112@gmail.com" class="contact-cta">
+            <span>Send me an email</span>
+            <div class="cta-arrow"><i class="fas fa-arrow-right"></i></div>
+          </a>
+        </div>
+        <div class="contact-right reveal-right">
+          <div class="contact-cards">
+            <a href="https://github.com/Santo-Sandy" target="_blank" rel="noopener noreferrer" class="cc">
+              <div class="cc-icon"><i class="fab fa-github"></i></div>
+              <div class="cc-info">
+                <span class="cc-label">GitHub</span>
+                <span class="cc-val">@Santo-Sandy</span>
+              </div>
+              <i class="fas fa-arrow-up-right-from-square cc-arrow"></i>
+            </a>
+            <a href="https://www.linkedin.com/in/santhosh-g-584398276" target="_blank" rel="noopener noreferrer" class="cc">
+              <div class="cc-icon cc-li"><i class="fab fa-linkedin-in"></i></div>
+              <div class="cc-info">
+                <span class="cc-label">LinkedIn</span>
+                <span class="cc-val">Santhosh G</span>
+              </div>
+              <i class="fas fa-arrow-up-right-from-square cc-arrow"></i>
+            </a>
+            <a href="mailto:slantzer3112@gmail.com" class="cc">
+              <div class="cc-icon cc-mail"><i class="fas fa-envelope"></i></div>
+              <div class="cc-info">
+                <span class="cc-label">Email</span>
+                <span class="cc-val">slantzer3112@gmail.com</span>
+              </div>
+              <i class="fas fa-arrow-up-right-from-square cc-arrow"></i>
+            </a>
+            <a href="tel:+919894789376" class="cc">
+              <div class="cc-icon cc-phone"><i class="fas fa-phone"></i></div>
+              <div class="cc-info">
+                <span class="cc-label">Phone</span>
+                <span class="cc-val">+91 98947 89376</span>
+              </div>
+              <i class="fas fa-arrow-up-right-from-square cc-arrow"></i>
+            </a>
+            <div class="cc no-link">
+              <div class="cc-icon cc-loc"><i class="fas fa-map-marker-alt"></i></div>
+              <div class="cc-info">
+                <span class="cc-label">Location</span>
+                <span class="cc-val">Gummidipoondi, Tamil Nadu 601201</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <span class="footer-logo">{santo.}</span>
+      <p>Developed by <strong>Santo </strong> &copy; 2026</p>
+      <div class="footer-socials">
+        <a href="https://github.com/Santo-Sandy" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i></a>
+        <a href="https://www.linkedin.com/in/santhosh-g-584398276" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin-in"></i></a>
+        <a href="https://www.instagram.com/dead_user_off/" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
+        <a href="mailto:slantzer3112@gmail.com"><i class="fas fa-envelope"></i></a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- BACK TO TOP -->
+  <button id="backTop" title="Back to top"><i class="fas fa-arrow-up"></i></button>
+
+  <script src="script.js"></script>
+</body>
+</html>
+
+
