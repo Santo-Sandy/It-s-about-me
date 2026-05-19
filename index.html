@@ -14,9 +14,15 @@
 </head>
 <body>
 
-  <!-- CURSOR -->
-  <div id="cursor-dot"></div>
-  <div id="cursor-ring"></div>
+  <!-- SHURIKEN CURSOR -->
+  <div id="shuriken-cursor" aria-hidden="true">
+    <div class="shuriken-trail"></div>
+    <div class="shuriken-wrap">
+      <div class="shuriken-blade"></div>
+      <div class="shuriken-core"></div>
+    </div>
+  </div>
+  <div id="shuriken-sparks" aria-hidden="true"></div>
 
   <!-- SPLASH -->
   <div id="splash">
@@ -72,7 +78,7 @@
           <span class="hn-line hn-role"><span id="typed"></span><span class="cursor">|</span></span>
         </h1>
         <p class="hero-desc">
-          Full Stack Developer crafting production-grade Flutter apps, Angular dashboards &amp; scalable backends. State-level competition winner. Interning at <strong>Kriyatec IT Systems</strong>.
+          Full Stack Developer crafting production-grade Flutter apps, React interfaces, Go backends &amp; MongoDB-powered systems. State-level competition winner. Interning at <strong>Kriyatec IT Systems</strong>.
         </p>
         <div class="hero-stats">
           <div class="stat">
@@ -127,7 +133,13 @@
             <div class="orbit-chip chip-java"><i class="fas fa-coffee"></i> Java</div>
           </div>
           <div class="avatar-orbit orbit-c">
-            <div class="orbit-chip chip-angular"><i class="fab fa-angular"></i> Angular</div>
+            <div class="orbit-chip chip-react"><i class="fab fa-react"></i> React</div>
+          </div>
+          <div class="avatar-orbit orbit-d">
+            <div class="orbit-chip chip-go"><i class="fas fa-code"></i> Go</div>
+          </div>
+          <div class="avatar-orbit orbit-e">
+            <div class="orbit-chip chip-mongo"><i class="fas fa-database"></i> MongoDB</div>
           </div>
           <div class="avatar-status">
             <span class="pulse-ring"></span>
@@ -235,17 +247,21 @@
             <div class="sb-head"><span>Angular</span><span class="sb-pct">85%</span></div>
             <div class="sb-track"><div class="sb-fill" style="--target: 85%"></div></div>
           </div>
-          <div class="skill-bar reveal" data-pct="85">
-            <div class="sb-head"><span>React</span><span class="sb-pct">85%</span></div>
-            <div class="sb-track"><div class="sb-fill" style="--target: 85%"></div></div>
+          <div class="skill-bar reveal" data-pct="88">
+            <div class="sb-head"><span>React</span><span class="sb-pct">88%</span></div>
+            <div class="sb-track"><div class="sb-fill" style="--target: 88%"></div></div>
+          </div>
+          <div class="skill-bar reveal" data-pct="82">
+            <div class="sb-head"><span>Go</span><span class="sb-pct">82%</span></div>
+            <div class="sb-track"><div class="sb-fill" style="--target: 82%"></div></div>
           </div>
           <div class="skill-bar reveal" data-pct="85">
             <div class="sb-head"><span>Firebase</span><span class="sb-pct">85%</span></div>
             <div class="sb-track"><div class="sb-fill" style="--target: 85%"></div></div>
           </div>
-          <div class="skill-bar reveal" data-pct="80">
-            <div class="sb-head"><span>MongoDB</span><span class="sb-pct">80%</span></div>
-            <div class="sb-track"><div class="sb-fill" style="--target: 80%"></div></div>
+          <div class="skill-bar reveal" data-pct="85">
+            <div class="sb-head"><span>MongoDB</span><span class="sb-pct">85%</span></div>
+            <div class="sb-track"><div class="sb-fill" style="--target: 85%"></div></div>
           </div>
           <div class="skill-bar reveal" data-pct="80">
             <div class="sb-head"><span>MySQL</span><span class="sb-pct">80%</span></div>
@@ -260,6 +276,7 @@
               <span class="pill">Python</span>
               <span class="pill">JavaScript</span>
               <span class="pill">Dart</span>
+              <span class="pill">Go</span>
               <span class="pill">C / C++</span>
               <span class="pill">PHP</span>
               <span class="pill">R</span>
@@ -273,6 +290,7 @@
               <span class="pill">React</span>
               <span class="pill">Spring</span>
               <span class="pill">Node.js</span>
+              <span class="pill">Gin / Go APIs</span>
             </div>
           </div>
           <div class="skill-group reveal">
@@ -327,7 +345,7 @@
               <li>Collaborated on full-stack features, optimizing performance for scalable architecture</li>
             </ul>
             <div class="tl-tags">
-              <span>Flutter</span><span>Angular</span><span>MongoDB</span><span>JWT</span>
+              <span>Flutter</span><span>React</span><span>Go</span><span>MongoDB</span><span>JWT</span>
             </div>
           </div>
         </div>

@@ -45,12 +45,13 @@ body.light {
   color: var(--text);
 }
 
-body.light #cursor-dot {
-  background: radial-gradient(circle at 30% 30%, #0f172a, var(--accent2) 70%);
+body.light #shuriken-cursor .shuriken-blade {
+  background: linear-gradient(135deg, #334155 0%, #0f766e 50%, #14b8a6 100%);
+  box-shadow: 0 0 14px rgba(15,118,110,.55), inset 0 0 6px rgba(255,255,255,.45);
 }
 
-body.light #cursor-ring {
-  border-color: rgba(14,165,233,.55);
+body.light #shuriken-cursor .shuriken-trail {
+  background: radial-gradient(circle, rgba(15,118,110,.25) 0%, transparent 70%);
 }
 
 html { scroll-behavior: smooth; }
@@ -72,29 +73,135 @@ a { text-decoration: none; color: inherit; }
 ul { list-style: none; }
 strong { color: var(--text); font-weight: 600; }
 
-/* ===== CUSTOM CURSOR ===== */
-#cursor-dot {
-  position: fixed; width: 9px; height: 9px;
-  background: radial-gradient(circle at 30% 30%, #ffffff, var(--accent2) 70%);
+/* ===== SHURIKEN CURSOR ===== */
+#shuriken-cursor {
+  position: fixed;
+  top: 0; left: 0;
+  pointer-events: none;
+  z-index: 99999;
+  opacity: 0;
+  transition: opacity .35s ease;
+  will-change: transform;
+}
+
+#shuriken-cursor.visible { opacity: 1; }
+
+.shuriken-trail {
+  position: absolute;
+  width: 52px; height: 52px;
+  margin: -26px 0 0 -26px;
   border-radius: 50%;
-  box-shadow: 0 0 14px rgba(0,229,192,.45);
-  pointer-events: none; z-index: 99999;
-  transform: translate(-50%, -50%);
-  transition: transform .1s, opacity .3s;
+  background: radial-gradient(circle, rgba(125,211,252,.22) 0%, rgba(11,245,128,.08) 45%, transparent 72%);
+  filter: blur(2px);
+  transition: width .35s cubic-bezier(.34,1.56,.64,1), height .35s cubic-bezier(.34,1.56,.64,1), opacity .3s;
 }
-#cursor-ring {
-  position: fixed; width: 34px; height: 34px;
-  border: 1.5px solid rgba(79,140,255,.55); border-radius: 50%;
-  box-shadow: inset 0 0 0 1px rgba(0,229,192,.2), 0 0 24px rgba(79,140,255,.2);
-  pointer-events: none; z-index: 99998;
-  transform: translate(-50%, -50%);
-  transition: transform .15s ease, width .3s, height .3s, border-color .3s, background .3s;
+
+.shuriken-wrap {
+  position: absolute;
+  width: 30px; height: 30px;
+  margin: -15px 0 0 -15px;
+  transition: width .3s cubic-bezier(.34,1.56,.64,1), height .3s cubic-bezier(.34,1.56,.64,1);
 }
-body.cursor-hover #cursor-ring {
-  width: 50px; height: 50px; border-color: var(--accent2);
-  background: rgba(0,229,192,.08);
+
+.shuriken-blade {
+  width: 100%; height: 100%;
+  background: linear-gradient(145deg, #f8fafc 0%, #94a3b8 42%, #64748b 100%);
+  clip-path: polygon(50% 0%, 63% 37%, 100% 50%, 63% 63%, 50% 100%, 37% 63%, 0% 50%, 37% 37%);
+  box-shadow:
+    0 0 16px rgba(125,211,252,.55),
+    0 0 4px rgba(11,245,128,.35),
+    inset 0 0 10px rgba(255,255,255,.35);
+  animation: shurikenIdleSpin 4s linear infinite;
+  transition: filter .25s, box-shadow .25s;
 }
-body.cursor-hover #cursor-dot { transform: translate(-50%, -50%) scale(1.2); }
+
+.shuriken-core {
+  position: absolute;
+  top: 50%; left: 50%;
+  width: 7px; height: 7px;
+  margin: -3.5px 0 0 -3.5px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #fff, var(--accent2));
+  box-shadow: 0 0 10px var(--accent2);
+  animation: shurikenCorePulse 1.6s ease-in-out infinite;
+}
+
+body.cursor-hover .shuriken-wrap {
+  width: 42px; height: 42px;
+  margin: -21px 0 0 -21px;
+}
+
+body.cursor-hover .shuriken-blade {
+  animation: shurikenHoverSpin .55s linear infinite;
+  box-shadow:
+    0 0 24px rgba(11,245,128,.75),
+    0 0 8px rgba(125,211,252,.5),
+    inset 0 0 12px rgba(255,255,255,.45);
+  filter: brightness(1.15);
+}
+
+body.cursor-hover .shuriken-trail {
+  width: 68px; height: 68px;
+  margin: -34px 0 0 -34px;
+  background: radial-gradient(circle, rgba(11,245,128,.28) 0%, rgba(125,211,252,.12) 50%, transparent 72%);
+}
+
+body.cursor-click .shuriken-wrap {
+  animation: shurikenStrike .32s cubic-bezier(.34,1.56,.64,1);
+}
+
+body.cursor-click .shuriken-blade {
+  filter: brightness(1.35);
+}
+
+@keyframes shurikenIdleSpin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+@keyframes shurikenHoverSpin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+@keyframes shurikenCorePulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50%      { transform: scale(1.25); opacity: .85; }
+}
+
+@keyframes shurikenStrike {
+  0%   { transform: scale(1) rotate(0deg); }
+  40%  { transform: scale(1.35) rotate(18deg); }
+  100% { transform: scale(1) rotate(0deg); }
+}
+
+#shuriken-sparks {
+  position: fixed; inset: 0;
+  pointer-events: none;
+  z-index: 99998;
+  overflow: hidden;
+}
+
+.shuriken-spark {
+  position: absolute;
+  width: 10px; height: 10px;
+  margin: -5px 0 0 -5px;
+  background: linear-gradient(135deg, #f8fafc, var(--accent));
+  clip-path: polygon(50% 0%, 63% 37%, 100% 50%, 63% 63%, 50% 100%, 37% 63%, 0% 50%, 37% 37%);
+  animation: sparkFly var(--dur, .65s) cubic-bezier(.2,.8,.2,1) forwards;
+  opacity: .9;
+}
+
+@keyframes sparkFly {
+  0% {
+    transform: translate(0, 0) rotate(0deg) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(var(--tx), var(--ty)) rotate(var(--rot)) scale(0);
+    opacity: 0;
+  }
+}
 
 /* ===== SCROLLBAR ===== */
 ::-webkit-scrollbar { width: 4px; }
@@ -456,13 +563,19 @@ img { max-width: 100%; height: auto; }
 .orbit-chip i { font-size: .9rem; }
 .chip-flutter i { color: #54c5f8; }
 .chip-java i { color: #f89820; }
-.chip-angular i { color: #dd0031; }
+.chip-react i { color: #61dafb; }
+.chip-go i { color: #00add8; }
+.chip-mongo i { color: #47a248; }
 .orbit-a { top: 10px; right: -10px; animation: floatA 4s ease-in-out infinite; }
 .orbit-b { bottom: 40px; right: -20px; animation: floatB 5s ease-in-out infinite; }
 .orbit-c { top: 50%; left: -30px; transform: translateY(-50%); animation: floatC 4.5s ease-in-out infinite; }
+.orbit-d { top: 18%; right: -24px; animation: floatD 5.2s ease-in-out infinite; }
+.orbit-e { bottom: 18%; left: -28px; animation: floatE 4.8s ease-in-out infinite; }
 @keyframes floatA { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)} }
 @keyframes floatB { 0%,100%{transform:translateY(0)} 50%{transform:translateY(8px)} }
 @keyframes floatC { 0%,100%{transform:translateY(-50%) translateX(0)} 50%{transform:translateY(-50%) translateX(-6px)} }
+@keyframes floatD { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-8px) rotate(2deg)} }
+@keyframes floatE { 0%,100%{transform:translateY(0)} 50%{transform:translateY(6px) rotate(-2deg)} }
 .avatar-status {
   position: absolute; bottom: 10px; left: 50%; transform: translateX(-50%);
   display: flex; align-items: center; gap: .5rem;
@@ -1092,5 +1205,5 @@ footer i.fa-heart { color: var(--accent3); }
 
 /* touch/no-cursor devices */
 @media (hover: none), (pointer: coarse) {
-  #cursor-dot, #cursor-ring { display: none; }
+  #shuriken-cursor, #shuriken-sparks { display: none; }
 }

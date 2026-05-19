@@ -1,38 +1,74 @@
 // ─────────────────────────────────────────────
-// CUSTOM CURSOR
+// SHURIKEN CURSOR
 // ─────────────────────────────────────────────
-const dot = document.getElementById('cursor-dot');
-const ring = document.getElementById('cursor-ring');
+const shurikenCursor = document.getElementById('shuriken-cursor');
+const sparkLayer = document.getElementById('shuriken-sparks');
 const hasFinePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
 
-if (dot && ring && hasFinePointer) {
-  let mx = window.innerWidth / 2, my = window.innerHeight / 2;
-  let rx = mx, ry = my;
+if (shurikenCursor && hasFinePointer) {
+  let mx = window.innerWidth / 2;
+  let my = window.innerHeight / 2;
+  let tx = mx;
+  let ty = my;
+  let moveAngle = 0;
+  let lastMx = mx;
+  let lastMy = my;
 
   document.addEventListener('mousemove', e => {
     mx = e.clientX;
     my = e.clientY;
-    dot.style.opacity = '1';
-    ring.style.opacity = '1';
+    shurikenCursor.classList.add('visible');
   });
 
   document.addEventListener('mouseleave', () => {
-    dot.style.opacity = '0';
-    ring.style.opacity = '0';
+    shurikenCursor.classList.remove('visible');
   });
 
+  document.addEventListener('mousedown', () => {
+    document.body.classList.add('cursor-click');
+    spawnSparks(mx, my);
+    setTimeout(() => document.body.classList.remove('cursor-click'), 320);
+  });
+
+  function spawnSparks(x, y) {
+    if (!sparkLayer) return;
+    const count = 6;
+    for (let i = 0; i < count; i++) {
+      const spark = document.createElement('div');
+      spark.className = 'shuriken-spark';
+      const angle = (Math.PI * 2 * i) / count + Math.random() * 0.4;
+      const dist = 28 + Math.random() * 22;
+      spark.style.left = x + 'px';
+      spark.style.top = y + 'px';
+      spark.style.setProperty('--tx', `${Math.cos(angle) * dist}px`);
+      spark.style.setProperty('--ty', `${Math.sin(angle) * dist}px`);
+      spark.style.setProperty('--rot', `${120 + Math.random() * 240}deg`);
+      spark.style.setProperty('--dur', `${0.45 + Math.random() * 0.35}s`);
+      sparkLayer.appendChild(spark);
+      spark.addEventListener('animationend', () => spark.remove());
+    }
+  }
+
   function animCursor() {
-    dot.style.left = mx + 'px';
-    dot.style.top = my + 'px';
-    rx += (mx - rx) * .18;
-    ry += (my - ry) * .18;
-    ring.style.left = rx + 'px';
-    ring.style.top = ry + 'px';
+    const dx = mx - lastMx;
+    const dy = my - lastMy;
+    if (Math.hypot(dx, dy) > 1.5) {
+      moveAngle = Math.atan2(dy, dx) * (180 / Math.PI) + 90;
+    }
+    lastMx = mx;
+    lastMy = my;
+
+    tx += (mx - tx) * 0.22;
+    ty += (my - ty) * 0.22;
+
+    const tilt = document.body.classList.contains('cursor-hover') ? moveAngle * 0.35 : moveAngle * 0.18;
+    shurikenCursor.style.transform = `translate3d(${tx}px, ${ty}px, 0) rotate(${tilt}deg)`;
+
     requestAnimationFrame(animCursor);
   }
   animCursor();
 
-  document.querySelectorAll('a, button, .pill, .proj-card, .about-card, .tl-card, .cc, .social-link, .proj-link').forEach(el => {
+  document.querySelectorAll('a, button, .pill, .proj-card, .about-card, .tl-card, .cc, .social-link, .proj-link, .game-card, .game-play-btn').forEach(el => {
     el.addEventListener('mouseenter', () => document.body.classList.add('cursor-hover'));
     el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-hover'));
   });
@@ -154,7 +190,7 @@ window.addEventListener('load', () => {
 // ─────────────────────────────────────────────
 // TYPING EFFECT
 // ─────────────────────────────────────────────
-const roles = ['Full Stack Developer', 'Flutter Developer', 'Angular Developer', 'Android Developer', 'Software Engineer'];
+const roles = ['Full Stack Developer', 'React Developer', 'Go Backend Developer', 'Flutter Developer', 'MongoDB Specialist', 'Software Engineer'];
 let ri = 0, ci = 0, deleting = false;
 const typedEl = document.getElementById('typed');
 
